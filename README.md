@@ -2,8 +2,8 @@
 
 ## Installation
 
-Run in RNE and set -d/--dir to RNE-demo path
+Run in react-native-elements directory and set -d/--dir option to relative path to react-native-elements-app directory
 
 ```bash
-npx github:arpitBhalla/rne-watch -d ../path-to-rne-demo
+npx rne-watch -d ../path-to-rne-demo
 ```

@@ -18,7 +18,7 @@ program.parse(process.argv);
 const options = program.opts();
 const demoAppPath = options.dir || "../react-native-elements-app";
 
-console.log(options);
+console.log();
 const log = (...args) => console.log(chalk.blue.bold("[RNE]", ...args));
 
 log(chalk.blue.bold("React Native Elements"));

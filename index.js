@@ -4,9 +4,10 @@ const chalk = require("chalk");
 const { dtsPlugin } = require("esbuild-plugin-d.ts");
 const { build } = require("esbuild");
 const { Command } = require("commander");
+const { join } = require("path");
 
 const program = new Command();
-program.version("1.0.0");
+program.version("1.1.0");
 
 const watcher = chokidar.watch("./src/**", {
   ignored: /__tests__/,
@@ -18,9 +19,11 @@ program.option("-d, --dir <path>", "path of rne-demo app");
 program.parse(process.argv);
 
 const options = program.opts();
-const outPath =
-  (options.dir || "../react-native-elements-app") +
-  "/node_modules/react-native-elements/dist";
+const outPath = join(
+  __dirname,
+  options.dir || "../react-native-elements-app",
+  "/node_modules/react-native-elements/dist"
+);
 
 console.log();
 const log = (...args) => console.log(chalk.blue.bold("[RNE]", ...args));

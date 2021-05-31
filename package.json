@@ -1,6 +1,6 @@
 {
   "name": "rne-watch",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "Watch files for React Native Elements Demo App",
   "main": "index.js",
   "scripts": {

@@ -7,7 +7,7 @@ const { Command } = require("commander");
 const { join } = require("path");
 
 const program = new Command();
-program.version("1.1.0");
+program.version("1.1.1");
 
 const watcher = chokidar.watch("./src/**", {
   ignored: /__tests__/,

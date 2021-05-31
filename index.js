@@ -31,7 +31,7 @@ watcher
     try {
       log(chalk.yellow("Change detected at", path, "transpiling & copying..."));
       exec(
-        `tsc && cp -r ./dist ../${demoAppPath}/node_modules/react-native-elements/`
+        `tsc && cp -r ./dist ./${demoAppPath}/node_modules/react-native-elements/`
       )
         .on("error", () => console.log("ERROR"))
         .on("close", () =>

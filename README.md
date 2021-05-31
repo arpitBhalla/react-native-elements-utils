@@ -2,6 +2,8 @@
 
 ## Installation
 
+Run in RNE and set -d/--dir to RNE-demo path
+
 ```bash
-npx github.com/arpitBhalla/rne-watch -d ../path-to-rne-demo
+npx github:arpitBhalla/rne-watch -d ../path-to-rne-demo
 ```

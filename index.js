@@ -11,14 +11,14 @@ const watcher = chokidar.watch("./src/**", {
   persistent: true,
 });
 
-program.option("-d, --dir", "output extra debugging");
+program.option("-d, --dir <path>", "path of rne-demo app");
 
 program.parse(process.argv);
 
 const options = program.opts();
 const demoAppPath = options.dir || "../react-native-elements-app";
 
-console.log();
+console.log(options);
 const log = (...args) => console.log(chalk.blue.bold("[RNE]", ...args));
 
 log(chalk.blue.bold("React Native Elements"));

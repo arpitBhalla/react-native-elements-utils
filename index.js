@@ -1,8 +1,10 @@
 #!/usr/bin/env node
 const chokidar = require("chokidar");
 const chalk = require("chalk");
-const { exec } = require("child_process");
+const { dtsPlugin } = require("esbuild-plugin-d.ts");
+const { build } = require("esbuild");
 const { Command } = require("commander");
+
 const program = new Command();
 program.version("1.0.0");
 
@@ -16,7 +18,9 @@ program.option("-d, --dir <path>", "path of rne-demo app");
 program.parse(process.argv);
 
 const options = program.opts();
-const demoAppPath = options.dir || "../react-native-elements-app";
+const outPath =
+  (options.dir || "../react-native-elements-app") +
+  "/node_modules/react-native-elements/dist";
 
 console.log();
 const log = (...args) => console.log(chalk.blue.bold("[RNE]", ...args));
@@ -29,18 +33,20 @@ watcher
   )
   .on("change", (path) => {
     try {
-      log(chalk.yellow("Change detected at", path, "transpiling & copying..."));
-      exec(
-        `tsc && cp -r ./dist ./${demoAppPath}/node_modules/react-native-elements/`
-      )
-        .on("error", () => console.log("ERROR"))
-        .on("close", () =>
-          log(
-            chalk.green.bold(
-              `Copied to ${demoAppPath}, change a file to re-compile`
-            )
-          )
-        );
+      log(chalk.yellow("Change detected at"), chalk.blue(path));
+
+      build({
+        jsx: "preserve",
+        format: "esm",
+        entryPoints: [path],
+        outfile: path
+          .replace(/^src/, outPath)
+          .replace(/ts$/, "js")
+          .replace(/tsx$/, "jsx"),
+        plugins: [dtsPlugin({ outDir: outPath })],
+      }).finally(() => {
+        log(chalk.green.bold(`Copied to ${outPath}`));
+      });
     } catch (error) {
       log(chalk.red.bold("Error"));
     }

@@ -26,7 +26,7 @@ const outPath = join(
 );
 
 console.log();
-const log = (...args) => console.log(chalk.blue.bold("[RNE]", ...args));
+const log = console.log.bind(console, chalk.blue.bold("[RNE]"));
 
 log(chalk.blue.bold("React Native Elements"));
 

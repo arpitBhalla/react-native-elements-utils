@@ -1,9 +1,9 @@
 import { FileInfo, JSCodeshift } from 'jscodeshift';
-import cardTransform from './cardTransform';
+import textTransform from './text-reduce-props';
 
-const transforms = [cardTransform];
+const transforms = [textTransform];
 
-export default (file: FileInfo, api: JSCodeshift, options: any) => {
+export default (file: FileInfo, api: JSCodeshift) => {
   const j = api.jscodeshift;
 
   let ast = j(file.source);

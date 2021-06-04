@@ -1,9 +1,9 @@
-import { Transform } from 'jscodeshift';
-const cardTransform = require('./cardTransform');
+import { FileInfo, JSCodeshift } from 'jscodeshift';
+import cardTransform from './cardTransform';
 
 const transforms = [cardTransform];
 
-const me: Transform = (file, api, options) => {
+export default (file: FileInfo, api: JSCodeshift, options: any) => {
   const j = api.jscodeshift;
 
   let ast = j(file.source);

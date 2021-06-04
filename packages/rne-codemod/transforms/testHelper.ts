@@ -3,7 +3,7 @@ const p = require('path');
 const jscodeshift = require('jscodeshift');
 const flowParser = require('flow-parser');
 
-const read = fileName =>
+const read = (fileName: string) =>
   fs.readFileSync(
     p.join(
       __dirname,
@@ -16,7 +16,7 @@ const read = fileName =>
     'utf8'
   );
 
-export default (transformName, testFileName) => {
+export default (transformName: any, testFileName: any) => {
   const source = read(`${testFileName}.input.tsx`);
   const output = read(`${testFileName}.output.tsx`);
   let transform = require(p.join('../', 'transforms', transformName));

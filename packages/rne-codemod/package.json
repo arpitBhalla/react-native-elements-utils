@@ -1,0 +1,17 @@
+{
+  "name": "rne-codemod",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib/index.js",
+  "scripts": {
+    "start": ""
+  },
+  "author": "Arpit Bhalla",
+  "license": "MIT",
+  "dependencies": {
+    "@types/jest": "^26.0.23",
+    "@types/jscodeshift": "^0.11.0",
+    "jest": "^27.0.4",
+    "jscodeshift": "^0.12.0"
+  }
+}

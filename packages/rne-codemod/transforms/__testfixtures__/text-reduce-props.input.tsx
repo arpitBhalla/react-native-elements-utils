@@ -19,6 +19,9 @@ const App = () => {
       <Text h4 h4Style={{ color: "blue" }} style={{ backgroundColor: "blue" }}>
         My Text
       </Text>
+      <Text h4Style={{ color: "blue" }} h2Style={{ backgroundColor: "blue" }}>
+        My Text
+      </Text>
     </>
   );
 };

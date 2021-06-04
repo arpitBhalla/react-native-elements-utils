@@ -2,9 +2,9 @@
   "name": "@rne/codemod",
   "version": "0.0.1-alpha.0",
   "main": "index.js",
-  "types": "declaration.d.ts",
   "scripts": {
     "test": "jest",
+    "test:watch": " npx nodemon -w \"./transforms\"  --exec \"jscodeshift -t ./transforms/text-reduce-props.ts -d -p ./transforms/__testfixtures__/text-reduce-props.input.tsx\" -e ts",
     "lint": "eslint ."
   },
   "jest": {

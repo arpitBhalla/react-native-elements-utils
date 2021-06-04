@@ -11,23 +11,8 @@ export default function transformer(
   const textComponent = ast.findJSXElements("Text");
 
   textComponent.forEach((nodePath) => {
-    const styleNodePath = j(nodePath).find(j.JSXAttribute, {
-      name: {
-        type: "JSXIdentifier",
-        name: "style",
-      },
-    });
-
-    styleNodePath.replaceWith((childPath) => {
-      const { node } = childPath;
-      console.log("ASDas", JSON.stringify(node.value));
-      node.value = j.jsxExpressionContainer(
-        j.objectExpression(j.objectProperty())
-      );
-
-      return node;
-    });
-
+    const styles: any = {};
+    let done = false;
     ["h1", "h2", "h3", "h4"].forEach((size) => {
       j(nodePath)
         .find(j.JSXAttribute, {
@@ -38,31 +23,44 @@ export default function transformer(
         })
         .replaceWith((childPath) => {
           const { node } = childPath;
-          node.name = j.jsxIdentifier("variant");
-          node.value = j.stringLiteral(size);
-
+          if (!done) {
+            node.name = j.jsxIdentifier("variant");
+            node.value = j.stringLiteral(size);
+            done = true;
+          }
           return node;
         });
+      // j(nodePath)
+      //   .find(j.JSXAttribute, {
+      //     name: {
+      //       type: "JSXIdentifier",
+      //       name: `${size}Style`,
+      //     },
+      //   })
+      //   .forEach((childNodePath) => {
+      //     styles[size] = { ASDf: "sad" };
+      //     // j(childNodePath).remove();
+      //   });
     });
-  });
-  // ['h1', 'h2', 'h3', 'h4'].forEach((e) => {
-  //   textComponent
-  //     .find(j.JSXAttribute, {
-  //       name: {
-  //         type: 'JSXIdentifier',
-  //         name: e,
-  //       },
-  //     })
-  //     .forEach((childNodePath) => {
-  //       j(childNodePath).replaceWith((nodePath) => {
-  //         const { node } = nodePath;
-  //         node.name = j.jsxIdentifier('variant');
-  //         node.value = j.stringLiteral(e);
+    // const styleNodePath = j(nodePath).find(j.JSXAttribute, {
+    //   name: {
+    //     type: "JSXIdentifier",
+    //     name: "style",
+    //   },
+    // });
+    // styleNodePath.replaceWith((childPath) => {
+    //   const { node } = childPath;
 
-  //         return node;
-  //       });
-  //     });
-  // });
+    //   node.value = j.jsxExpressionContainer(
+    //     j.objectExpression([
+    //       j.property("init", j.stringLiteral("sad"), j.stringLiteral("asf")),
+    //       j.spreadElement(j.stringLiteral("sd")),
+    //     ])
+    //   );
+
+    //   return node;
+    // });
+  });
 
   return ast.toSource();
 }

@@ -3,8 +3,8 @@ import textTransform from './text-reduce-props';
 
 const transforms = [textTransform];
 console.log('sdaf');
-export default (file: FileInfo, api: JSCodeshift) => {
-  const j = api.jscodeshift;
+export default (file: FileInfo, api: any) => {
+  const j: JSCodeshift = api.jscodeshift;
 
   let ast = j(file.source);
   transforms.forEach((transform) => {

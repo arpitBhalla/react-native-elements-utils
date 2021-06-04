@@ -1,24 +1,12 @@
 {
-  "name": "react-native-paper-codemod",
+  "name": "rne-codemod",
   "version": "0.0.1",
-  "description": "react-native-paper codemod scripts",
   "main": "index.js",
   "types": "declaration.d.ts",
   "scripts": {
     "test": "jest",
-    "lint": "eslint .",
-    "precommit": "yarn lint && yarn test"
+    "lint": "eslint ."
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/callstack/react-native-paper-codemod.git"
-  },
-  "author": "",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/callstack/react-native-paper-codemod/issues"
-  },
-  "homepage": "https://github.com/callstack/react-native-paper-codemod#readme",
   "dependencies": {
     "@types/jscodeshift": "^0.11.0",
     "flow-parser": "^0.76.0",

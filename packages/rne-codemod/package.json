@@ -1,0 +1,31 @@
+{
+  "name": "rne-codemod",
+  "version": "0.0.1",
+  "main": "index.js",
+  "types": "declaration.d.ts",
+  "scripts": {
+    "test": "jest",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "@types/jscodeshift": "^0.11.0",
+    "flow-parser": "^0.76.0",
+    "husky": "^0.14.3",
+    "jest": "^23.4.0",
+    "jscodeshift": "^0.5.1"
+  },
+  "jest": {
+    "globals": {
+      "baseDir": "../"
+    },
+    "roots": [
+      "transforms"
+    ],
+    "modulePathIgnorePatterns": [
+      "<rootDir>/node_modules"
+    ]
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.23"
+  }
+}

@@ -1108,6 +1108,17 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@rneui/envinfo@workspace:packages/envinfo":
+  version: 0.0.0-use.local
+  resolution: "@rneui/envinfo@workspace:packages/envinfo"
+  dependencies:
+    "@types/envinfo": ^7.8.1
+    envinfo: ^7.8.1
+  bin:
+    envinfo: ./envinfo.js
+  languageName: unknown
+  linkType: soft
+
 "@rneui/themed-edge@github:react-native-elements/react-native-elements#themed":
   version: 4.0.0-rc.2
   resolution: "@rneui/themed-edge@https://github.com/react-native-elements/react-native-elements.git#commit=b231de6353697e310709157d3386bceb61937b1c"
@@ -1127,6 +1138,13 @@ __metadata:
   version: 1.1.2
   resolution: "@tootallnate/once@npm:1.1.2"
   checksum: e1fb1bbbc12089a0cb9433dc290f97bddd062deadb6178ce9bcb93bb7c1aecde5e60184bc7065aec42fe1663622a213493c48bbd4972d931aae48315f18e1be9
+  languageName: node
+  linkType: hard
+
+"@types/envinfo@npm:^7.8.1":
+  version: 7.8.1
+  resolution: "@types/envinfo@npm:7.8.1"
+  checksum: ba1d7dd82cc2b2b038dd7dc2e7d7478e16a46fa85b134a7c22953be5a4c6cab4c355ffe90a5a36b3cd1afada38bf4d660d3a6db9b2b0278a7eeb86570068fdd0
   languageName: node
   linkType: hard
 
@@ -2158,7 +2176,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"envinfo@npm:^7.7.4":
+"envinfo@npm:^7.7.4, envinfo@npm:^7.8.1":
   version: 7.8.1
   resolution: "envinfo@npm:7.8.1"
   bin:

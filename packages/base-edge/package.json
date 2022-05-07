@@ -10,7 +10,8 @@
     "access": "public"
   },
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "release": "yarn npm publish --tag edge"
   },
   "author": "RNE Core Team",
   "license": "MIT",

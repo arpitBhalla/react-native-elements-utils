@@ -9,7 +9,7 @@
   "private": true,
   "scripts": {
     "build": "node scripts/build.mjs && echo 'Running tsc' && lerna run  build && echo 'Done'",
-    "release": "lerna exec yarn npm publish -- --tag edge "
+    "release": "lerna run release"
   },
   "dependencies": {
     "fast-glob": "^3.2.11",

@@ -1,6 +1,6 @@
 {
   "name": "@rneui/theming",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Custom Theming for React / React Native apps",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useMemo } from "react";
-import deepmerge from "deepmerge";
+import deepmerge, { Options } from "deepmerge";
 // @ts-ignore
 import hoistNonReactStatics from "hoist-non-react-statics";
 
@@ -17,7 +17,8 @@ export const makeTheming = <Theme = {}, Colors = {}, ComponentTheme = {}>(
     mode?: ThemeMode;
     lightColors?: RecursivePartial<Colors>;
     darkColors?: RecursivePartial<Colors>;
-  } & Theme
+  } & Theme,
+  customMerge?: deepmerge.Options["customMerge"]
 ) => {
   type ComponentFunctionProps<Components = ComponentTheme> = {
     [Key in keyof Components]?:
@@ -200,7 +201,7 @@ export const makeTheming = <Theme = {}, Colors = {}, ComponentTheme = {}>(
           updateTheme,
           replaceTheme,
           ...deepmerge<Theme>(themedProps || {}, rest, {
-            customMerge: combineByStyles,
+            customMerge,
             clone: false,
           }),
           children,
@@ -253,12 +254,3 @@ export const makeTheming = <Theme = {}, Colors = {}, ComponentTheme = {}>(
 
 const isClassComponent = (Component: any) =>
   Boolean(Component?.prototype?.isReactComponent);
-
-const combineByStyles = (propName = "") => {
-  if (propName.endsWith("style") || propName.endsWith("Style")) {
-    return (prop1: any, prop2: any) => {
-      return [prop1, prop2].flat();
-    };
-  }
-  return undefined;
-};

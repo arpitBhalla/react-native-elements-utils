@@ -1,0 +1,56 @@
+{
+  "name": "@rneui/theming",
+  "version": "0.0.0-alpha.0",
+  "description": "Custom Theming for React / React Native apps",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "prepublish": "tsc",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/react-native-elements"
+  },
+  "keywords": [
+    "reactjs",
+    "react-native",
+    "theming"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "clean-install": "rimraf node_modules && yarn"
+  },
+  "author": "RNE Core team",
+  "contributors": [
+    {
+      "name": "Arpit Bhalla",
+      "url": "https://github.com/arpitBhalla"
+    }
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/react-native-elements/react-native-elements/issues"
+  },
+  "homepage": "https://reactnativeelements.com/",
+  "collective": {
+    "type": "opencollective",
+    "url": "https://opencollective.com/react-native-elements",
+    "logo": "https://opencollective.com/react-native-elements/logo.txt"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/react-native-elements/react-native-elements.git"
+  },
+  "dependencies": {
+    "deepmerge": "^4.2.2",
+    "hoist-non-react-statics": "^3.3.2"
+  },
+  "devDependencies": {
+    "@types/hoist-non-react-statics": "^3.3.1"
+  }
+}

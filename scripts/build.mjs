@@ -1,26 +1,30 @@
-import fs, { readdirSync, writeFileSync } from "fs";
+import fs from "fs-extra";
 import { resolve, join } from "path";
+import glob from "fast-glob";
 
-const pkgName = "@rneui/base-edge";
+const basePath = join("");
 
-const basePath = resolve();
+const prefix = "@rneui";
 
-const rnePath = join(basePath, "node_modules", pkgName, "dist");
+["base-edge", "themed-edge"].map((pkgName) => {
+  console.log("Building", pkgName);
+  const rnePath = join(basePath, "node_modules", prefix, pkgName, "dist");
 
-const srcPath = join(basePath, "src");
+  const srcPath = join(basePath, "packages", pkgName, "src");
 
-if (fs.existsSync(srcPath)) {
-  fs.rmSync(srcPath, { recursive: true });
-}
+  if (fs.existsSync(srcPath)) {
+    fs.rmSync(srcPath, { recursive: true });
+  }
 
-fs.mkdirSync(srcPath);
+  fs.mkdirSync(srcPath);
 
-readdirSync(rnePath).forEach((file) => {
-  if (!file.startsWith("index"))
-    writeFileSync(
-      join(srcPath, `${file}.ts`),
-      `export * from "${pkgName}/dist/${file}";`
+  const reg = new RegExp(`${rnePath}/|.js$`, "g");
+
+  glob.sync(join(rnePath, "**/*.js"), { absolute: false }).forEach((file) => {
+    const fileName = file.replace(reg, "");
+    fs.outputFile(
+      join(srcPath, `${fileName}.ts`),
+      `export * from "@rneui/${pkgName}/dist/${fileName}";`
     );
+  });
 });
-
-writeFileSync(join(srcPath, `index.ts`), `export * from "${pkgName}/dist";`);

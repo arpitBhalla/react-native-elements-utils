@@ -1,0 +1,21 @@
+{
+  "name": "@rneui/themed",
+  "version": "0.0.0-edge.2",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsc"
+  },
+  "author": "RNE Core Team",
+  "license": "MIT",
+  "dependencies": {
+    "@rneui/themed-edge": "github:react-native-elements/react-native-elements#themed"
+  },
+  "description": ""
+}

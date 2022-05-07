@@ -1,21 +1,19 @@
 {
-  "name": "@rneui/base",
-  "version": "0.0.0-edge.1",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "files": [
-    "dist"
-  ],
-  "publishConfig": {
-    "access": "public"
+  "name": "temp",
+  "packageManager": "yarn@3.2.0",
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
   },
+  "private": true,
   "scripts": {
-    "build": "node scripts/build.mjs && tsc"
+    "build": "node scripts/build.mjs && echo 'Running tsc' && lerna run  build && echo 'Done'",
+    "release": "lerna exec yarn npm publish -- --tag edge "
   },
-  "author": "RNE Core Team",
-  "license": "MIT",
   "dependencies": {
-    "@rneui/base-edge": "github:react-native-elements/react-native-elements#base"
-  },
-  "description": ""
+    "fast-glob": "^3.2.11",
+    "fs-extra": "^10.1.0",
+    "lerna": "^4.0.0"
+  }
 }

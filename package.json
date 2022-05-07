@@ -1,0 +1,19 @@
+{
+  "name": "temp",
+  "packageManager": "yarn@3.2.0",
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
+  },
+  "private": true,
+  "scripts": {
+    "build": "node scripts/build.mjs && echo 'Running tsc' && lerna run  build && echo 'Done'",
+    "release": "lerna run release"
+  },
+  "dependencies": {
+    "fast-glob": "^3.2.11",
+    "fs-extra": "^10.1.0",
+    "lerna": "^4.0.0"
+  }
+}

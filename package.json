@@ -1,5 +1,5 @@
 {
-  "name": "temp",
+  "name": "@rneui/utils",
   "packageManager": "yarn@3.2.0",
   "workspaces": {
     "packages": [

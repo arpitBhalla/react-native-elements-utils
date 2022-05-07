@@ -15,3 +15,17 @@ Prints information about the current environment relevant to packages to the con
 - expo: Not Found
 - react-native-cli: Not Found
 ```
+
+- type: textarea
+  attributes:
+  label: Your environment 🌎
+  description: Run `npx @rneui/envinfo` and paste the results.
+  value: |
+  <details>
+  <summary>`npx @rneui/envinfo`</summary>
+
+        ```
+          Output from `npx @rneui/envinfo` goes here.
+        ```
+
+  </details>

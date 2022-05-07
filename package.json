@@ -1,15 +1,21 @@
 {
   "name": "@rneui/base",
   "version": "0.0.0-edge.1",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
   },
-  "author": "",
-  "license": "ISC",
+  "scripts": {
+    "build": "node scripts/build.mjs && tsc"
+  },
+  "author": "RNE Core Team",
+  "license": "MIT",
   "dependencies": {
     "@rneui/base-edge": "github:react-native-elements/react-native-elements#base"
   },
-  "devDependencies": {},
   "description": ""
 }

@@ -12,8 +12,8 @@
     "edge-release": "lerna run release"
   },
   "dependencies": {
-    "fast-glob": "^3.2.11",
     "fs-extra": "^10.1.0",
-    "lerna": "^4.0.0"
+    "lerna": "^4.0.0",
+    "node-fetch": "^3.2.4"
   }
 }

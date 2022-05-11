@@ -1,30 +1,41 @@
+import fetch from "node-fetch";
 import fs from "fs-extra";
-import { resolve, join } from "path";
-import glob from "fast-glob";
+import { join } from "path";
 
-const basePath = join("");
+const rootPath = join("");
 
-const prefix = "@rneui";
+async function main(pkg) {
+  const srcPath = join(rootPath, "packages", `${pkg}-edge`, "src");
 
-["base-edge", "themed-edge"].map((pkgName) => {
-  console.log("Building", pkgName);
-  const rnePath = join(basePath, "node_modules", prefix, pkgName, "dist");
-
-  const srcPath = join(basePath, "packages", pkgName, "src");
+  const BASE_PATH =
+    "https://api.github.com/repos/react-native-elements/react-native-elements/git/trees/" +
+    pkg;
 
   if (fs.existsSync(srcPath)) {
     fs.rmSync(srcPath, { recursive: true });
   }
 
-  fs.mkdirSync(srcPath);
+  fs.mkdirpSync(srcPath);
 
-  const reg = new RegExp(`${rnePath}/|.js$`, "g");
-
-  glob.sync(join(rnePath, "**/*.js"), { absolute: false }).forEach((file) => {
-    const fileName = file.replace(reg, "");
-    fs.outputFile(
-      join(srcPath, `${fileName}.ts`),
-      `export * from "@rneui/${pkgName}/dist/${fileName}";`
-    );
+  const root = await fetch(BASE_PATH)
+    .then((res) => res.json())
+    .catch(console.log);
+  console.log(root);
+  const { url } = root.tree?.find(({ path }) => {
+    return path === "dist";
   });
-});
+  const { tree } = await fetch(url + "?recursive=1").then((res) => res.json());
+  tree.forEach(({ type, path = "" }) => {
+    if (type === "blob" && !path.endsWith("d.ts")) {
+      const fileName = path.pop().replace(".js", "");
+      fs.outputFile(
+        join(srcPath, `${path.replace(".js", ".tsx")}`),
+        `export * from "@rneui/${pkg}-edge/dist/${fileName}";`
+      );
+    }
+  });
+}
+
+console.log("fetching tree...");
+
+["base", "themed"].map(main);

@@ -1100,6 +1100,23 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@rneui/base@npm:4.0.0-rc.7":
+  version: 4.0.0-rc.7
+  resolution: "@rneui/base@npm:4.0.0-rc.7"
+  dependencies:
+    "@types/react-native-vector-icons": ^6.4.10
+    color: ^3.2.1
+    deepmerge: ^4.2.2
+    hoist-non-react-statics: ^3.3.2
+    react-native-ratings: ^8.1.0
+    react-native-size-matters: ^0.4.0
+  peerDependencies:
+    react-native-safe-area-context: ^3.1.9 || ^4.0.0
+    react-native-vector-icons: ">7.0.0"
+  checksum: 9edefa9f4fada6c1e10ef98a004f26a40cfd3a7d6a9c3f4e001c2567caf4440516b02c626d10404c02a0b388d5067b0ca69228eb5dd911a959543db6c60aecd4
+  languageName: node
+  linkType: hard
+
 "@rneui/base@workspace:packages/base-edge":
   version: 0.0.0-use.local
   resolution: "@rneui/base@workspace:packages/base-edge"
@@ -1118,10 +1135,31 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@rneui/kit@workspace:packages/kit":
+  version: 0.0.0-use.local
+  resolution: "@rneui/kit@workspace:packages/kit"
+  dependencies:
+    "@rneui/base": 4.0.0-rc.7
+    "@rneui/themed": 4.0.0-rc.7
+  peerDependencies:
+    "@rneui/base": 4.0.0-rc.7
+    "@rneui/themed": 4.0.0-rc.7
+  languageName: unknown
+  linkType: soft
+
 "@rneui/themed-edge@github:react-native-elements/react-native-elements#themed":
   version: 4.0.0-rc.2
   resolution: "@rneui/themed-edge@https://github.com/react-native-elements/react-native-elements.git#commit=b231de6353697e310709157d3386bceb61937b1c"
   checksum: 1d63a599434038f6dd29c9be3814b98ea88e35bcd2383a6374c5c5d34595a27603b5846490dbe55b4a8c7da12e42a5ba4f4d22b579a35a013920146b2dac4787
+  languageName: node
+  linkType: hard
+
+"@rneui/themed@npm:4.0.0-rc.7":
+  version: 4.0.0-rc.7
+  resolution: "@rneui/themed@npm:4.0.0-rc.7"
+  peerDependencies:
+    "@rneui/base": 4.0.0-rc.7
+  checksum: 13547a1e058b4ebaf339bac317e025d06fbf7d7ab779b66af2cc4e9c6dc2a30cfcfef0a2520ba1aa2a14e5f2ae11a6f4c66707e85f539f5682220c74e9a87fe0
   languageName: node
   linkType: hard
 
